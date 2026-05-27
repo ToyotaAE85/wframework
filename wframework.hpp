@@ -9,6 +9,7 @@
 #include <source_location>
 #include <format>
 
+
 #define CNCT(a, b) a##b
 #define CONCAT(a, b) CNCT(a, b)
 
@@ -66,7 +67,6 @@ void check_impl(
 }
 
 
-// WTESTCASE(string) { ... }
 #define WTESTCASE(name)											\
 	void CONCAT(WF, __LINE__)();								\
 	static auto CONCAT(WL, __LINE__) = [](){					\
@@ -74,7 +74,6 @@ void check_impl(
 		return true;											\
 	}();														\
 	void CONCAT(WF, __LINE__)()	
-
 
 
 #define WREQUIRES(cond)							\
@@ -89,7 +88,7 @@ void check_impl(
 	check_impl(false, lhs, rhs, #lhs, #rhs);
 
 
-#define WCHECK_OPERATOR(lhs, rhs, op)							\
+#define WCHECK_OPERATOR(lhs, op, rhs)							\
 	do {														\
 		const auto lhs_ { (lhs) };								\
 		const auto rhs_ { (rhs) };								\
